@@ -11,12 +11,8 @@ export default function App() {
   name="Sheikh Noor"
   studentId="22-49639-3"
   department="Computer Science - AIUB"
-  bio="Passionate about mobile app development."
-  skills={[
-    "React Native",
-    "JavaScript",
-    "Expo"
-  ]}
+  bio="..."
+  skills={["React Native","JavaScript","Problem Solving"]}
 />
 
       <ProfileCard
