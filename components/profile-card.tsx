@@ -1,4 +1,5 @@
-import { StyleSheet, Text, View } from "react-native";
+import { useState } from "react";
+import { Pressable, StyleSheet, Text, View } from "react-native";
 
 interface ProfileCardProps {
   name: string;
@@ -18,6 +19,8 @@ export default function ProfileCard({
     .map((word) => word[0])
     .join("");
 
+  const [isFollowing, setIsFollowing] = useState(false);
+
   return (
     <View style={styles.card}>
       <View style={styles.avatar}>
@@ -31,6 +34,15 @@ export default function ProfileCard({
       <View style={styles.divider} />
 
       <Text style={styles.bio}>{bio}</Text>
+
+      <Pressable
+        style={styles.button}
+        onPress={() => setIsFollowing(!isFollowing)}
+      >
+        <Text style={styles.buttonText}>
+          {isFollowing ? "Following" : "Follow"}
+        </Text>
+      </Pressable>
     </View>
   );
 }
@@ -95,5 +107,16 @@ const styles = StyleSheet.create({
     color: "#64748B",
     textAlign: "center",
     lineHeight: 22,
+  },
+  button: {
+    backgroundColor: "#0D9488",
+    paddingHorizontal: 20,
+    paddingVertical: 10,
+    borderRadius: 8,
+    marginTop: 15,
+  },
+  buttonText: {
+    color: "#FFFFFF",
+    fontWeight: "bold",
   },
 });
