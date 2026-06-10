@@ -6,6 +6,7 @@ interface ProfileCardProps {
   studentId: string;
   department: string;
   bio: string;
+  skills: string[];
 }
 
 export default function ProfileCard({
@@ -13,6 +14,7 @@ export default function ProfileCard({
   studentId,
   department,
   bio,
+  skills,
 }: ProfileCardProps) {
   const initials = name
     .split(" ")
@@ -43,6 +45,14 @@ export default function ProfileCard({
           {isFollowing ? "Following" : "Follow"}
         </Text>
       </Pressable>
+
+      <View style={styles.skillsContainer}>
+        {skills.map((skill, index) => (
+          <Text key={index} style={styles.skill}>
+            {skill}
+          </Text>
+        ))}
+      </View>
     </View>
   );
 }
@@ -61,6 +71,7 @@ const styles = StyleSheet.create({
     elevation: 4,
     marginBottom: 20,
   },
+
   avatar: {
     width: 88,
     height: 88,
@@ -70,17 +81,20 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     marginBottom: 16,
   },
+
   avatarText: {
     color: "#FFFFFF",
     fontSize: 28,
     fontWeight: "bold",
   },
+
   name: {
     fontSize: 22,
     fontWeight: "bold",
     color: "#0D1F4E",
     marginBottom: 2,
   },
+
   idBadge: {
     fontSize: 12,
     color: "#0D9488",
@@ -91,23 +105,27 @@ const styles = StyleSheet.create({
     marginBottom: 4,
     overflow: "hidden",
   },
+
   role: {
     fontSize: 14,
     color: "#64748B",
     marginBottom: 16,
   },
+
   divider: {
     width: "100%",
     height: 1,
     backgroundColor: "#E2E8F0",
     marginBottom: 16,
   },
+
   bio: {
     fontSize: 14,
     color: "#64748B",
     textAlign: "center",
     lineHeight: 22,
   },
+
   button: {
     backgroundColor: "#0D9488",
     paddingHorizontal: 20,
@@ -115,8 +133,25 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     marginTop: 15,
   },
+
   buttonText: {
     color: "#FFFFFF",
     fontWeight: "bold",
+  },
+
+  skillsContainer: {
+    flexDirection: "row",
+    flexWrap: "wrap",
+    justifyContent: "center",
+    marginTop: 12,
+  },
+
+  skill: {
+    backgroundColor: "#E1F5EE",
+    color: "#0D9488",
+    paddingHorizontal: 10,
+    paddingVertical: 5,
+    borderRadius: 20,
+    margin: 4,
   },
 });
